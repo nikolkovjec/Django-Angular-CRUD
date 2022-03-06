@@ -5,13 +5,17 @@ import { PizzasComponent } from './pizzas/pizzas.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { PizzaDetailComponent } from './pizza-detail/pizza-detail.component';
+import { LoginComponent } from './login/login.component';
+
+import { AuthGuard } from './user.service';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'pizzas', component: PizzasComponent },
-  { path: 'pizzas/:pk', component: PizzaDetailComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'pizzas', component: PizzasComponent, canActivate: [AuthGuard] },
+  { path: 'pizzas/:pk', component: PizzaDetailComponent, canActivate: [AuthGuard] },
 ];
 
 

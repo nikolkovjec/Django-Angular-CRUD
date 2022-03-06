@@ -1,6 +1,10 @@
-<h1>{{title}}</h1>
-<nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/pizzas">Pizzas</a>
-</nav>
+<div *ngIf="isLoggedIn()">
+    <nav class="navbar">
+        <ul>
+            <li><a routerLink="/dashboard">Dashboard</a></li>
+            <li><a routerLink="/pizzas">Pizzas</a></li>
+            <li style="float:right"><a routerLink="" (click)="logout()">Logout</a></li>
+        </ul>
+    </nav>
+</div>
 <router-outlet></router-outlet>
