@@ -2,43 +2,43 @@
   <h2>Pizzas</h2>
 </div>
 
-<div>
-  <div>
-    <label>Pizza name:
-      <input #pizzaName />
-    </label>
-  </div>
-
-  <div>
-    <label>Pizza description:
-      <input #pizzaDesc />
-    </label>
-  </div>
-
-  <div>
-    <label>Pizza price:
-      <input #pizzaPrice />
-    </label>
-  </div>
-  
-  <button (click)="add(
-                        pizzaName.value,
-                        pizzaDesc.value, 
-                        pizzaPrice.value
-                      );
-                      pizzaName.value='';
-                      pizzaDesc.value='';
-                      pizzaPrice.value=''">
-    add
-  </button>
+<div class="pizza-list">
+  <ul class="pizzas">
+    <li *ngFor="let pizza of pizzas">
+      <a routerLink="/pizzas/{{pizza.pk}}">
+        <span class="badge">{{pizza.pk}}</span> {{pizza.name}}
+      </a>
+      <button class="delete" title="delete pizza"
+        (click)="delete(pizza)">x</button>
+    </li>
+  </ul>
 </div>
 
-<ul class="pizzas">
-  <li *ngFor="let pizza of pizzas">
-    <a routerLink="/pizzas/{{pizza.pk}}">
-      <span class="badge">{{pizza.pk}}</span> {{pizza.name}}
-    </a>
-    <button class="delete" title="delete pizza"
-      (click)="delete(pizza)">x</button>
-  </li>
-</ul>
+
+<div class="pizza-box">
+  <div class="pizza-form">
+    <div class="textbox">
+        <input #pizzaName placeholder="Name">
+    </div>
+  
+    <div class="textbox">
+        <input #pizzaDesc placeholder="Description">
+    </div>
+  
+    <div class="textbox">
+        <input #pizzaPrice placeholder="Price">
+    </div>
+  
+    <input type="button"
+           class="btn" 
+           value="Add pizza" 
+           (click)="add(
+                      pizzaName.value,
+                      pizzaDesc.value, 
+                      pizzaPrice.value
+                    );
+                    pizzaName.value='';
+                    pizzaDesc.value='';
+                    pizzaPrice.value=''">
+  </div>
+</div>
