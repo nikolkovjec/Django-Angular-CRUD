@@ -36,7 +36,7 @@ class ClientSerializer(HyperlinkedModelSerializer):
 class ManagerSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Manager
-        fields = ('url', 'name', 'email', 'cpf', 'salary')
+        fields = ('url', 'pk', 'name', 'email', 'cpf', 'salary')
 
     def create(self, validated_data):
         user = User.objects.filter(email=validated_data['email'])
@@ -83,9 +83,13 @@ class PizzaSerializer(HyperlinkedModelSerializer):
 
 
 class DemandSerializer(HyperlinkedModelSerializer):
+    client = ClientSerializer()
+    employee = EmployeeSerializer()
+    pizza = PizzaSerializer()
+    progress = ProgressSerializer()
     class Meta:
         model = Demand
-        fields = '__all__'
+        fields = ('url', 'pk', 'created', 'client', 'employee', 'pizza', 'progress')
 
 
 class ManagerEmployeeSerializer(HyperlinkedModelSerializer):

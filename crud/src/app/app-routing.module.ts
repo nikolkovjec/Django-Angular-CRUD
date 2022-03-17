@@ -8,6 +8,9 @@ import { PizzaDetailComponent } from './pizza-detail/pizza-detail.component';
 import { LoginComponent } from './login/login.component';
 
 import { AuthGuard } from './user.service';
+import { ManagersComponent } from './managers/managers.component';
+import { ManagerDetailComponent } from './manager-detail/manager-detail.component';
+import { DemandsComponent } from './demands/demands.component';
 
 
 const routes: Routes = [
@@ -16,6 +19,9 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'pizzas', component: PizzasComponent, canActivate: [AuthGuard] },
   { path: 'pizzas/:pk', component: PizzaDetailComponent, canActivate: [AuthGuard] },
+  { path: 'managers', component: ManagersComponent, canActivate: [AuthGuard] },
+  { path: 'managers/:pk', component: ManagerDetailComponent, canActivate: [AuthGuard] },
+  { path: 'demands', component: DemandsComponent, canActivate: [AuthGuard] },
 ];
 
 
